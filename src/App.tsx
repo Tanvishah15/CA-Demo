@@ -7,6 +7,8 @@ import ExitIntent from './components/shared/ExitIntent';
 import AppRoutes from './routes';
 import { useExitIntent } from './hooks/useExitIntent';
 
+const routerBasename = import.meta.env.BASE_URL.replace(/\/$/, '');
+
 function AppContent() {
   const { showExitIntent, dismiss } = useExitIntent();
 
@@ -26,7 +28,7 @@ function AppContent() {
 export default function App() {
   return (
     <HelmetProvider>
-      <BrowserRouter>
+      <BrowserRouter basename={routerBasename || undefined}>
         <AppContent />
       </BrowserRouter>
     </HelmetProvider>
